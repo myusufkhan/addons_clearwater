@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="view_partner_simple_form_inheritted" model="ir.ui.view">
+            <field name="name">res.partner.simplified.form.inheritted</field>
+            <field name="model">res.partner</field>
+           <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <group  attrs="{'invisible':  [('company_type', '=', 'company')]}">
+                        <group>
+                            <field name="first_name" string="First Name" style="font-size: 14px;"/>
+                            <field name="nick_name" string="Nick Name" style="font-size: 14px;"/>
+                            </group>
+                        <group>
+                            <field name="last_name" string="Last Name" style="font-size: 14px;"/>
+                            </group>
+                    </group>
+                </xpath>
+
+            </field>
+       </record>
+    </data>
+</odoo>

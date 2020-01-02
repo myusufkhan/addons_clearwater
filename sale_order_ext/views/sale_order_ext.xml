@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_date_on_sale_order_line" model="ir.ui.view">
+        <field name="name">sale.order.view_delivery_date_on_sale_order_line</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+        <xpath expr="//button[@name='action_draft']" position="before">
+          <button name="create_contract_terms" type="object" class="btn-primary" string="Generate Term Lines"/>
+
+          </xpath>
+            <!--Adding Contract Terms on Sale Order Master view-->
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field string="Contract Terms" name="contract_terms" />
+                <field string="Lines Count" name="deliveries_count" />
+            </xpath>
+            <!--Adding Delivery Date on Sale Order child tree view-->
+            <xpath expr="//tree/field[@name='product_uom_qty']" position="after">
+                    <field string="Delivery Date" name="delivery_date_custom" />
+                    <field string="Terms" name="from_contract_term" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
