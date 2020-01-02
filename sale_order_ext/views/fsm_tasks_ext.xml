@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_date_on_sale_order_line" model="ir.ui.view">
+        <field name="name">sale.order.view_delivery_date_on_sale_order_line</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/div[@name='button_box']" position="inside">
+                <button type="object" name="action_create_fsm_task"  icon="fa-list-alt">
+                    <field string="FSM Tasks" name="fsm_task_count" widget="statinfo"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+   <record id="fsm_project_task_view_form_extended" model="ir.ui.view">
+        <field name="name">fsm.task.form.inherited</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm.project_task_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group/group[1]/field[@name='partner_id']" position="after">
+                <field name="order_id"/>
+            </xpath>
+        </field>
+   </record>
+
+</odoo>
