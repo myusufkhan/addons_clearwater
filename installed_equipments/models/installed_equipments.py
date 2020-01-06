@@ -2,18 +2,6 @@
 
 from odoo import models, fields, api
 
-# class CWEquipments(models.Model):
-#     _name = 'cw.equipments'
-#     _rec_name = 'product_id'
-#     product_id = fields.Many2one('product.product',string="Product Name")
-#     partner_id = fields.Many2one('res.partner', string="Customer")
-#     delivery_date = fields.Date(string="Delivery Date")
-#     warranty_start_date =fields.Date("Warranty Start Date")
-#     warranty_end_date =fields.Date("Warranty End Date")
-#     picking_id = fields.Many2one('stock.picking', string="Delivery Order")
-
-
-
 class StockMoveDatesExtend(models.Model):
     _inherit = "stock.move.dates"
 
