@@ -18,13 +18,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','sale_renting','stock','industry_fsm'],
+    'depends': ['base','sale_renting','stock'],
 
     'data': [
     'views/sale_order_ext.xml',
     'security/ir.model.access.csv',
     'views/stock_move_line_ext.xml',
-    'views/fsm_tasks_ext.xml',
 
     ],
 
