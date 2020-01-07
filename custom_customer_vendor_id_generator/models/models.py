@@ -20,8 +20,9 @@ class Vendor_customer_id_field(models.Model):
 		# 	active=True
 		# 	sequence = self.env['ir.sequence'].create({'padding':padding,'implementation':implementation,'active':active, 'name':'Customer Id '+prefix,'code':'res.partner.customer'})
 		# add type check dont create sequence if contact is comapanay
-		if data['parent_id'] == False:
-			data['customer_id'] = self.env['ir.sequence'].next_by_code('res.partner.customer') or ''
+		if 'parent_id' in data.keys():
+			if data['parent_id'] == False:
+				data['customer_id'] = self.env['ir.sequence'].next_by_code('res.partner.customer') or ''
 
 		return super(Vendor_customer_id_field, self).create(data)
 
