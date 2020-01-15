@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partners_in_rentals" model="ir.ui.view">
+        <field name="name">view.res.partner.form.contact.rentals</field>
+        <field name="model">res.partner</field>
+        <field name="priority" eval="200"/>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+        <xpath expr="//form/sheet/div[@name='button_box']" position="inside">
+            <button type="object" name="action_create_rentals" icon="fa-shopping-basket">
+                <field string="Rentals" name="rental_count" widget="statinfo"/>
+            </button>
+            <button type="object" name="action_create_picking" icon="fa-truck">
+                <field string="Delivery Orders" name="picking_count" widget="statinfo"/>
+            </button>
+            <button type="object" name="action_create_task"  icon="fa-list-alt">
+                <field string="FSM Tasks" name="fsm_task_count" widget="statinfo"/>
+            </button>
+
+        </xpath>
+        </field>
+    </record>
+
+    <template id="report_invoice_add_customer_account_id" inherit_id="account.report_invoice_document">
+    <xpath expr="//div/div/div[5]" position="after">
+        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.parent_id" name="invoice_date">
+            <strong>Account ID:</strong>
+            <p class="m-0" t-field="o.partner_id.parent_id.code"/>
+        </div>
+        <div class="col-auto mw-100 mb-2" t-if="not o.partner_id.parent_id" name="invoice_date">
+            <strong>Account ID:</strong>
+            <p class="m-0" t-field="o.partner_id.code"/>
+        </div>
+    </xpath>
+
+  </template>
+
+<!--report_invoice_document-->
+
+
+</odoo>
+

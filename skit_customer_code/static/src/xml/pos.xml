@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+	<t t-extend='ClientListScreenWidget'>
+      <t t-jquery='.client-list thead tr' t-operation='prepend'>
+            <th>Code</th>
+        </t>
+    </t> 
+    
+    <t t-extend='ClientLine'>
+        <t t-jquery='.client-line' t-operation='prepend'>
+            <td>
+                <t t-esc='partner.code ? partner.code: "" '/>
+            </td>
+        </t>
+    </t>
+    
+    <t t-extend="ClientDetails">
+    	<t t-jquery='.client-details-right div:first' t-operation='prepend'>
+    		<div class='client-detail'>
+                <t t-if='partner.code'>
+                	<span class='detail client-code'>
+                        <t t-esc='partner.code'/></span>
+<!--                    <input class='detail client-code'    name='code'  t-att-value='partner.code || ""'    placeholder='Code'></input>-->
+
+                </t>
+            </div>
+    	</t>
+    </t>
+    
+    <t t-extend="ClientDetailsEdit">
+    	<t t-jquery='section .client-code' t-operation='after'>
+<!--    		<span class='detail client-name'><t t-esc='partner.code ? partner.code: "" '/></span>-->
+            <input class='detail client-code'    name='code'          t-att-value='partner.code || ""' placeholder='Code'></input>
+
+    	</t>
+    </t>
+<!--    <div class='client-detail'>-->
+<!--        <span class='label'>Postcode</span>-->
+<!--        <input class='detail client-address-zip'    name='zip'          t-att-value='partner.zip || ""' placeholder='ZIP'></input>-->
+<!--    </div>-->
+</templates>
