@@ -12,9 +12,9 @@
                 <field name="move_line_ids" position="replace">
                     <field name="move_line_nosuggest_ids" attrs="{'readonly': [('state', 'in', ('done', 'cancel'))]}" context="{'tree_view_ref': 'stock.view_stock_move_line_operation_tree_lot_name_as_textarea','default_picking_id': picking_id, 'default_move_id': id, 'default_product_id': product_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id, 'default_company_id': company_id}"/>
                 </field>
-                 <xpath expr="//form/group/group/field[@name='product_id']" position="after">
+<!--                  <xpath expr="//form/group/group/field[@name='product_id']" position="after">
                         <field name="is_equipment1" invisible="1" />
-                 </xpath>
+                 </xpath> -->
             </field>
         </record>
 
@@ -27,8 +27,8 @@
         <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='location_dest_id']" position="after">
-                <field name="mfg_waranty_date" attrs="{'invisible': [ ('parent.is_equipment1', '=', False)]}" /> <!--invisible="context.get('is_equipment',False)" -->
-                <field name="rec_d_into_inventory" attrs="{'invisible': [ ('parent.is_equipment1', '=', False)]}" /> <!--attrs="{'readonly': [ ('product_id.is_equipment', '=', False)]}"-->
+                <field name="mfg_waranty_date" /> <!--invisible="context.get('is_equipment',False)" -->
+                <field name="rec_d_into_inventory" /> <!--attrs="{'readonly': [ ('product_id.is_equipment', '=', False)]}"-->
                 <!--  <field name="dlr_waranty_date" attrs="{'invisible': [('picking_code', '=', 'incoming')]}" />  &lt;!&ndash; attrs="{'invisible': [('picking_code', '=', 'incoming')]}" attrs="{'invisible': picking_code != 'incoming'}"&ndash;&gt;-->
                 <!--  <field name="originally_deployed" attrs="{'invisible': [('picking_code', '=', 'incoming')]}"/>-->
                 <!--  <field name="installed_at_current_location" attrs="{'invisible': [('picking_code', '=', 'incoming')]}"/>-->
